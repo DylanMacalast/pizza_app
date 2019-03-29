@@ -5,7 +5,7 @@
     "main": "index.js",
     "scripts": {
         "test": "echo \"Error: no test specified\" && exit 1",
-        "start": "webpack-dev-server --config webpack.dev.js --mode development",
+        "start": "webpack-dev-server --config webpack.dev.js --mode development --open",
         "build": "webpack --config webpack.prod.js --mode production",
         "preview": "npm run build && http-server dist",
         "kickstart": "node kickstarter"
@@ -67,7 +67,7 @@
         "url-loader": "^1.0.1",
         "webpack": "^4.20.2",
         "webpack-cli": "^3.1.1",
-        "webpack-dev-server": "^3.1.10"
+        "webpack-dev-server": "^3.2.1"
     },
     "kickstartDependencies": [
         "inquirer",
