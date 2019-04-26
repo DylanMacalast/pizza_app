@@ -26,7 +26,7 @@ export const cost = [];
 export const calcTotal = () => {
     const reducer = (accumulator, currentValue) => accumulator + currentValue;
     const total = cost.reduce(reducer);
-    console.log(total);
+    return parseFloat(Math.round(total * 100) / 100).toFixed(2);
 }
 
 

@@ -3,7 +3,8 @@
     navElement: document.getElementById('nav-tab'),
     pizzaContent: document.getElementById('pizza'),
     drinksContent: document.getElementById('drinks'),
-    puddingContent: document.getElementById('pudding')
+    puddingContent: document.getElementById('pudding'),
+    total: document.querySelector('.total')
 };
 
 
@@ -30,3 +31,10 @@ export const renderItems = (type, value, ingredient) => {
 
 
 // =========== CALCULATING VIEW =======
+// Adding the total amount to the application UI
+export const renderTotal = (total) =>{
+
+    const markup = 
+    ` £${total}`;
+    elements.total.innerHTML= markup;
+}

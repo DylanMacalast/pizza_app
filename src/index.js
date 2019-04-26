@@ -40,90 +40,21 @@ for (var key in items) {
 
 // =========== CALCULATING CONTROLLER =======
 
-// What should happen:
-// push that items value into an array with the total cost
-// if the item is not in items object do nothing
-
-
 const getValue = (event) => {
     // getting the values
     const target = event.target.id;
     // check to see if its within items object
     if(target === items[target].ingredient){
         // if it is in items object push value to money array
-    let price = items[target].value;
-    cost.push(price);
-        calcTotal();
+        let price = items[target].value;
+        cost.push(price);
+        // Get the total from calcTotal function
+        const total =  calcTotal();
+        // Adding total to UI
+        view.renderTotal(total);
     }
 }
-
-// if(target === items[target].ingredient){
-//     // if it is push value to an array
-//     const price = items[target].value;
-//     console.log(price);
-//     const total = total.push(price);
-//     return total;
-// } 
-
-
 
 elements.pizzaContent.addEventListener('click', getValue);
 elements.drinksContent.addEventListener('click', getValue);
 elements.puddingContent.addEventListener('click', getValue);
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-//TESTING APP LOGIC
-// //testing with value - The values
-// const chorizo = document.getElementById('chorizo');
-// const fanta = document.getElementById('fanta');
-
-// chorizo.value="5.50";
-// fanta.value="1.50";
-
-
-
-
-// // testing getting cost of an element
-// const price = [];
-// const getCost = (event) =>{
-    
-//     let item = event.target.value;
-//     let itemNum = parseFloat(item);
-//     price.push(itemNum);
-// };
-
-// const pizza = document.querySelector('.inventory__tabs');
-// pizza.addEventListener('click', getCost);
-
-
-// // Testing adding all costs in price array
-// const calculateCost = () => {
-//     const reducer = (accumulator, currentValue) => accumulator + currentValue;
-//     let total = price.reduce(reducer);
-//     console.log(total);
-// }
-
-// pizza.addEventListener('click', calculateCost);
-
