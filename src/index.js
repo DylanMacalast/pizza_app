@@ -6,8 +6,7 @@ import {elements} from './js/view';
 
 
 
-
-// ===============Navigation tabs==============
+// =============== NAVIGATION TABS==============
 // INVRNTORY TABS
 const onTabClick = (event) => {
     event.preventDefault(); // stopping # in anchour tag from taking you to bottom of the page
@@ -40,21 +39,60 @@ for (var key in items) {
 
 // =========== CALCULATING CONTROLLER =======
 
-const getValue = (event) => {
-    // getting the values
-    const target = event.target.id;
+// Function to get the id of the selected div from the dom
+const getItemId = (event) => {
+    var itemClicked = event.target.id;
     // check to see if its within items object
-    if(target === items[target].ingredient){
-        // if it is in items object push value to money array
-        let price = items[target].value;
-        cost.push(price);
-        // Get the total from calcTotal function
-        const total =  calcTotal();
-        // Adding total to UI
-        view.renderTotal(total);
+    if(itemClicked === items[itemClicked].ingredient){
+        return itemClicked;
+    } else{
+        console.log('nothing selected');
     }
-}
+    
+};
 
-elements.pizzaContent.addEventListener('click', getValue);
-elements.drinksContent.addEventListener('click', getValue);
-elements.puddingContent.addEventListener('click', getValue);
+// Function to calculate the total and add it to UI
+const getTotal = () => {
+    // Get the total from calcTotal function
+    const total =  calcTotal();
+    // Adding total to UI
+    view.renderTotal(total);
+};
+
+
+
+// ========== ADD ITEM CONTROLLER =========
+
+const addItem = () => {
+    const itemSelected = getItemId(event);
+    // add items value to the cost array
+    const price = items[itemSelected].value;
+    cost.push(price);
+    // Add new item to the UI
+    view.addItemUi();
+};
+
+
+
+
+
+// ADDING EVENT LISTENERS FOR THE ITMES
+elements.pizzaContent.addEventListener('click', e =>{
+    addItem();
+    getTotal();
+});
+elements.drinksContent.addEventListener('click', e=>{
+    addItem();
+    getTotal();
+});
+elements.puddingContent.addEventListener('click', e => {
+    addItem();
+    getTotal();
+});
+
+
+// What to do next?
+// On click of item create a new item at the bottom with the same data
+// The ability to be able to delete that item with a swipe
+// Have a button to cancel the whole order
+// Have a button to 'pay' -> will reset the application

@@ -38,3 +38,10 @@ export const renderTotal = (total) =>{
     ` £${total}`;
     elements.total.innerHTML= markup;
 }
+
+
+
+// ========== ADD ITEM VIEW =========
+export const addItemUi = (id, value, ingredient) => {
+    console.log('adding to UI');
+}
