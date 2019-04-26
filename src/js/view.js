@@ -27,3 +27,6 @@ export const renderItems = (type, value, ingredient) => {
     }
     
 }
+
+
+// =========== CALCULATING VIEW =======

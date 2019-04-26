@@ -12,14 +12,22 @@ export default class Item {
 export const items = {
     cheese: new Item('pizza', 6, 'cheese'),
     chorizo: new Item('pizza', 7, 'chorizo'),
-    garlic: new Item('pizza', 8, 'garlic-bread'),
     fanta: new Item('drinks', 1.50, 'fanta'),
     coke: new Item('drinks', 1.50, 'coke'),
-    nutella: new Item('pudding', 4.55, 'nutella-pizza'),
-    applePie: new Item('pudding', 6, 'apple pie')
+    nutella: new Item('pudding', 4.55, 'nutella'),
+    applePie: new Item('pudding', 6, 'applePie')
   }
-    
 
+
+  // =========== CALCULATING MODEL =======
+    
+export const cost = [];
+// function to add the costs
+export const calcTotal = () => {
+    const reducer = (accumulator, currentValue) => accumulator + currentValue;
+    const total = cost.reduce(reducer);
+    console.log(total);
+}
 
 
 // what i want to happen

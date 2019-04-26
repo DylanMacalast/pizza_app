@@ -1,6 +1,6 @@
 require('normalize.css/normalize.css'); // Resets all css
 require('./styles/index.scss'); // adding main scss to js so its compiled into js
-import {items} from './js/model';
+import {items, cost, calcTotal} from './js/model';
 import * as view from './js/view';
 import {elements} from './js/view';
 
@@ -36,6 +36,40 @@ for (var key in items) {
         view.renderItems(items[key].type, items[key].value, items[key].ingredient);
     }
 }
+
+
+// =========== CALCULATING CONTROLLER =======
+
+// What should happen:
+// push that items value into an array with the total cost
+// if the item is not in items object do nothing
+
+
+const getValue = (event) => {
+    // getting the values
+    const target = event.target.id;
+    // check to see if its within items object
+    if(target === items[target].ingredient){
+        // if it is in items object push value to money array
+    let price = items[target].value;
+    cost.push(price);
+        calcTotal();
+    }
+}
+
+// if(target === items[target].ingredient){
+//     // if it is push value to an array
+//     const price = items[target].value;
+//     console.log(price);
+//     const total = total.push(price);
+//     return total;
+// } 
+
+
+
+elements.pizzaContent.addEventListener('click', getValue);
+elements.drinksContent.addEventListener('click', getValue);
+elements.puddingContent.addEventListener('click', getValue);
 
 
 
