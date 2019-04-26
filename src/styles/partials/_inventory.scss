@@ -1,0 +1,79 @@
+// INVENTORY TABS AND TAB CONTENT
+.inventory__container{
+    background-color: darkblue;
+    color: #efefef;
+}
+
+.inventory__nav{
+    list-style: none;
+    text-decoration: none;
+    padding: 0;
+    margin-top: 0;
+    border-bottom: 1px solid white
+}
+
+.inventory__li{
+    display: inline-flex;
+}
+
+    
+.inventory__a{
+      text-decoration: none;
+      color: white;
+      font-weight: 200;
+      padding: 10px;
+      &:hover{
+          text-decoration: none;
+          color:white;
+          border-right: 1px solid white;
+      }
+    }
+
+.inventory__tab { 
+  display: none;
+  margin-top: 50px;
+  padding-left: 20px;
+}
+
+.inventory__tab.active { 
+  display: inline; 
+}
+
+
+// PIZZA ITEM
+.pizza__item{
+    height: 200px;
+    width: 200px;
+    border: 1px solid white;
+    text-align: center;
+    &:hover{
+        background: white;
+        color: darkblue;
+        transition: .2s;
+    }
+}
+
+.drinks__item{
+    height: 200px;
+    width: 200px;
+    border: 1px solid white;
+    text-align: center;
+    &:hover{
+        background: white;
+        color: darkblue;
+        transition: .2s;
+    }
+}
+
+.pudding__item{
+    height: 200px;
+    width: 200px;
+    border: 1px solid white;
+    text-align: center;
+    &:hover{
+        background: white;
+        color: darkblue;
+        transition: .2s;
+    }
+}
+
