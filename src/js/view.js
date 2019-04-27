@@ -4,7 +4,8 @@
     pizzaContent: document.getElementById('pizza'),
     drinksContent: document.getElementById('drinks'),
     puddingContent: document.getElementById('pudding'),
-    total: document.querySelector('.total')
+    total: document.querySelector('.total'),
+    items: document.querySelector('.item__cards')
 };
 
 
@@ -31,9 +32,9 @@ export const renderItems = (type, value, ingredient) => {
 
 
 // =========== CALCULATING VIEW =======
+
 // Adding the total amount to the application UI
 export const renderTotal = (total) =>{
-
     const markup = 
     ` £${total}`;
     elements.total.innerHTML= markup;
@@ -42,6 +43,20 @@ export const renderTotal = (total) =>{
 
 
 // ========== ADD ITEM VIEW =========
-export const addItemUi = (id, value, ingredient) => {
-    console.log('adding to UI');
+export const addItemUi = (type, value, ingredient,id) => {
+    const markup = 
+    `
+    <div class="item__card">
+        <h6>${type}</h6>
+        <p>${ingredient}</p>
+        <p>£${value} ${id}</p>
+        <button>delete item</button>
+    </div>
+    `;
+    elements.items.insertAdjacentHTML('beforeend', markup);
 }
+
+
+
+
+// ========== DELETE ITEM VIEW =========

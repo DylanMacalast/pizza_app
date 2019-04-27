@@ -33,5 +33,43 @@ export const calcTotal = () => {
 
 // ========== ADD ITEM MODEL =========
 
+// class to create a new added item
+class addedItem {
+    constructor(type, value, ingredient, id){
+        this.type = type;
+        this.value = value;
+        this.ingredient = ingredient;
+        this.id = id;
+    }
+}
 
+
+// Array storing the new added items
+export const addedItems = [];
+
+// function that creates new item and adds its value to the costs array
+export const addItemModel = (type, ingredient, value) => {
+    // create new id for the added item
+    if(addedItems.length > 0) {
+        // find the id of the item before the new item and add one to it -> makes it easeier to delete
+        var ID = addedItems[addedItems.length -1].id+ 1;
+    } else {
+        var ID = 0;
+    }
+    // Create the new added item with its ID
+    const newItem = new addedItem(type, ingredient, value, ID);
+    // push the new added item to the addedItems array
+    addedItems.push(newItem);
+    // get the value and push it to the cost array
+    const price = value;
+    cost.push(price);
+}
+
+
+
+// ========== DELETE ITEM MODEL =========
+
+export const deleteItem = (id) => {
+    
+}
 

@@ -1,6 +1,6 @@
 require('normalize.css/normalize.css'); // Resets all css
 require('./styles/index.scss'); // adding main scss to js so its compiled into js
-import {items, cost, calcTotal} from './js/model';
+import {items, addedItems, calcTotal, addItemModel, deleteItem} from './js/model';
 import * as view from './js/view';
 import {elements} from './js/view';
 
@@ -65,14 +65,29 @@ const getTotal = () => {
 
 const addItem = () => {
     const itemSelected = getItemId(event);
-    // add items value to the cost array
+    // Get the items value
     const price = items[itemSelected].value;
-    cost.push(price);
+    // get the items type
+    const type = items[itemSelected].type;
+    //get the items ingredient
+    const ingredient = items[itemSelected].ingredient;
+    // put into addItemModel function
+    addItemModel(type, ingredient, price);
+
     // Add new item to the UI
-    view.addItemUi();
+    view.addItemUi(type, price, ingredient);
 };
 
 
+// ========== DELETE ITEM CONTROLLER =========
+const removeItem = () => {
+// get the selected items id and pass it into the deleteItem function
+deleteItem();
+
+}
+
+
+// ADDING EVENT LISTENERS TO DELETE ITEMS
 
 
 
@@ -90,9 +105,3 @@ elements.puddingContent.addEventListener('click', e => {
     getTotal();
 });
 
-
-// What to do next?
-// On click of item create a new item at the bottom with the same data
-// The ability to be able to delete that item with a swipe
-// Have a button to cancel the whole order
-// Have a button to 'pay' -> will reset the application
