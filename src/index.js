@@ -91,12 +91,10 @@ elements.itemCards.addEventListener('click', function(e){
     if(e.target && e.target.matches('#delete__button')){
         // get the id of the clicked element
         const id = view.getId(e);
-        console.log(id);
         // delete item from the addedItems array in the model
-        view.deleteItemView(e);
-        // remove the markup from the UI
         deleteItemModel(id);
-        console.log(addedItems);
+        // remove the markup from the UI
+        view.deleteItemView(id);
         // update the cost in the UI
         getTotal();
     }

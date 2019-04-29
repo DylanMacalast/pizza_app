@@ -47,13 +47,14 @@ export const renderTotal = (total) =>{
 export const addItemUi = (type, value, ingredient, id) => {
     const markup = 
     `
-    
+    <div id="delete__item--container">
         <div class="item__card" id="${id}">
             <h6>${type}</h6>
             <p>${ingredient}</p>
             <p>£${value}</p>
             <button id="delete__button">delete item</button>
         </div>
+    <div>
     `;
     elements.items.insertAdjacentHTML('beforeend', markup);
 }
@@ -71,9 +72,13 @@ return ID;
 
 
 // function to delte the added item from the UI
-export const deleteItemView = (event) => {
-    const ele = event.target.id;
-    let el = document.getElementById(ele);
-    el = el.parentNode;
-    el.parentNode.removeChild(el);
+export const deleteItemView = (id) => {
+// grab num id 
+    const numId = id;
+    // convert it to string
+    const ID = numId.toString();
+    // find the element with the id of that number
+    const delItem = document.getElementById(ID);
+    // move up to the parent of that element and delete its child!
+    delItem.parentNode.removeChild(delItem);
 }
