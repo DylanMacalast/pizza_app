@@ -5,7 +5,8 @@
     drinksContent: document.getElementById('drinks'),
     puddingContent: document.getElementById('pudding'),
     total: document.querySelector('.total'),
-    items: document.querySelector('.item__cards')
+    items: document.querySelector('.item__cards'),
+    itemCards: document.querySelector('.item__cards')
 };
 
 
@@ -43,15 +44,16 @@ export const renderTotal = (total) =>{
 
 
 // ========== ADD ITEM VIEW =========
-export const addItemUi = (type, value, ingredient,id) => {
+export const addItemUi = (type, value, ingredient, id) => {
     const markup = 
     `
-    <div class="item__card">
-        <h6>${type}</h6>
-        <p>${ingredient}</p>
-        <p>£${value} ${id}</p>
-        <button>delete item</button>
-    </div>
+    
+        <div class="item__card" id="${id}">
+            <h6>${type}</h6>
+            <p>${ingredient}</p>
+            <p>£${value}</p>
+            <button id="delete__button">delete item</button>
+        </div>
     `;
     elements.items.insertAdjacentHTML('beforeend', markup);
 }
@@ -59,4 +61,19 @@ export const addItemUi = (type, value, ingredient,id) => {
 
 
 
+
 // ========== DELETE ITEM VIEW =========
+export const getId = (event) => {
+const cardId = event.target.parentNode.id;
+const ID = parseInt(cardId);
+return ID;
+};
+
+
+// function to delte the added item from the UI
+export const deleteItemView = (event) => {
+    const ele = event.target.id;
+    let el = document.getElementById(ele);
+    el = el.parentNode;
+    el.parentNode.removeChild(el);
+}

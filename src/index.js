@@ -1,6 +1,6 @@
 require('normalize.css/normalize.css'); // Resets all css
 require('./styles/index.scss'); // adding main scss to js so its compiled into js
-import {items, addedItems, calcTotal, addItemModel, deleteItem} from './js/model';
+import {items, addedItems, calcTotal, addItemModel, deleteItemModel, cost} from './js/model';
 import * as view from './js/view';
 import {elements} from './js/view';
 
@@ -40,7 +40,7 @@ for (var key in items) {
 // =========== CALCULATING CONTROLLER =======
 
 // Function to get the id of the selected div from the dom
-const getItemId = (event) => {
+const getInventoryItem = (event) => {
     var itemClicked = event.target.id;
     // check to see if its within items object
     if(itemClicked === items[itemClicked].ingredient){
@@ -60,11 +60,11 @@ const getTotal = () => {
 };
 
 
-
 // ========== ADD ITEM CONTROLLER =========
-
+// another way of doing it:
+// Loop through the addedItems array and create UI elements based on how many.
 const addItem = () => {
-    const itemSelected = getItemId(event);
+    const itemSelected = getInventoryItem(event);
     // Get the items value
     const price = items[itemSelected].value;
     // get the items type
@@ -72,36 +72,55 @@ const addItem = () => {
     //get the items ingredient
     const ingredient = items[itemSelected].ingredient;
     // put into addItemModel function
-    addItemModel(type, ingredient, price);
-
-    // Add new item to the UI
-    view.addItemUi(type, price, ingredient);
+    const addItem = addItemModel(type, price, ingredient);
+    // getting the items id
+    const id = addItem.id;
+    // Add new item to the UI by looping through the addedItems array and creating one for each item
+    view.addItemUi(type, price, ingredient, id );
+    // calculate the total and render to UI
+    getTotal();
 };
 
 
+
 // ========== DELETE ITEM CONTROLLER =========
-const removeItem = () => {
-// get the selected items id and pass it into the deleteItem function
-deleteItem();
-
-}
-
 
 // ADDING EVENT LISTENERS TO DELETE ITEMS
+elements.itemCards.addEventListener('click', function(e){
+    // if the button clicked was the delete button run code
+    if(e.target && e.target.matches('#delete__button')){
+        // get the id of the clicked element
+        const id = view.getId(e);
+        console.log(id);
+        // delete item from the addedItems array in the model
+        view.deleteItemView(e);
+        // remove the markup from the UI
+        deleteItemModel(id);
+        console.log(addedItems);
+        // update the cost in the UI
+        getTotal();
+    }
+})
+
 
 
 
 // ADDING EVENT LISTENERS FOR THE ITMES
+// NOTE -> use event delegation to grab each inventory item
 elements.pizzaContent.addEventListener('click', e =>{
-    addItem();
-    getTotal();
+    if(e.target.parentNode.id === 'pizza'){
+        addItem();
+    }
+    
 });
 elements.drinksContent.addEventListener('click', e=>{
-    addItem();
-    getTotal();
+    if(e.target.parentNode.id === 'drinks'){
+        addItem();
+    }
 });
 elements.puddingContent.addEventListener('click', e => {
-    addItem();
-    getTotal();
+    if(e.target.parentNode.id === 'pudding'){
+        addItem();
+    }
 });
 

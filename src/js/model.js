@@ -22,13 +22,21 @@ export const items = {
   // =========== CALCULATING MODEL =======
 
 // cost array storing all the values from the items
-export const cost = [0];
+export let cost = [];
 // function to add the costs
+// will only add if the array has 1 or more values in it other wise the cost is 0
 export const calcTotal = () => {
-    const reducer = (accumulator, currentValue) => accumulator + currentValue;
-    const total = cost.reduce(reducer);
-    return parseFloat(Math.round(total * 100) / 100).toFixed(2);
+    if(cost.length > 0) {
+        const reducer = (accumulator, currentValue) => accumulator + currentValue;
+        const total = cost.reduce(reducer);
+        return parseFloat(Math.round(total * 100) / 100).toFixed(2);
+    } else {
+        cost = [1];
+        return 0;
+    }
+    
 }
+
 
 
 // ========== ADD ITEM MODEL =========
@@ -45,31 +53,55 @@ class addedItem {
 
 
 // Array storing the new added items
-export const addedItems = [];
+export let addedItems = [];
+
+
+// function to push items values to the cost array
+const updateCost = () => {
+        cost = [];
+        addedItems.forEach(element => {
+        const price = element.value;
+        cost.push(price);
+        });
+}
 
 // function that creates new item and adds its value to the costs array
-export const addItemModel = (type, ingredient, value) => {
+export const addItemModel = (type, value, ingredient) => {
+    let ID;
     // create new id for the added item
     if(addedItems.length > 0) {
         // find the id of the item before the new item and add one to it -> makes it easeier to delete
-        var ID = addedItems[addedItems.length -1].id+ 1;
+         ID = addedItems[addedItems.length -1].id+ 1;
     } else {
-        var ID = 0;
+         ID = 0;
     }
     // Create the new added item with its ID
-    const newItem = new addedItem(type, ingredient, value, ID);
+    const newItem = new addedItem(type, value, ingredient, ID);
     // push the new added item to the addedItems array
     addedItems.push(newItem);
-    // get the value and push it to the cost array
-    const price = value;
-    cost.push(price);
+    // update the cost array
+    updateCost();
+    return newItem;
 }
 
 
 
 // ========== DELETE ITEM MODEL =========
 
-export const deleteItem = (id) => {
-    
+export const deleteItemModel = (id) => {
+    let ids, index;
+ids = addedItems.map(function(current){
+    return current.id; // returning the current index in array and the id value.
+});
+index = ids.indexOf(id);
+
+// if the index is not -1 (it is in the array delete it) if not do nothing
+if (index !== -1) {
+    addedItems.splice(index, 1);
 }
+// update the cost array
+updateCost();
+}
+
+
 
