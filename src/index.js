@@ -1,6 +1,6 @@
 require('normalize.css/normalize.css'); // Resets all css
 require('./styles/index.scss'); // adding main scss to js so its compiled into js
-import {items, addedItems, calcTotal, addItemModel, deleteItemModel, cost} from './js/model';
+import {items, addedItems, calcTotal, addItemModel, deleteItemModel, cost, initModel} from './js/model';
 import * as view from './js/view';
 import {elements} from './js/view';
 
@@ -50,6 +50,7 @@ const getInventoryItem = (event) => {
     }
     
 };
+
 
 // Function to calculate the total and add it to UI
 const getTotal = () => {
@@ -121,4 +122,15 @@ elements.puddingContent.addEventListener('click', e => {
         addItem();
     }
 });
+
+// ========== INIT FUNCTION ===========
+const init = () => {
+    initModel();
+    view.initView(event);
+    getTotal();
+    };
+    
+// init buttons with event listeners 
+elements.cancelBtn.addEventListener('click' ,init);
+elements.approveBtn.addEventListener('click' ,init);
 

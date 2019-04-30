@@ -1,3 +1,5 @@
+import { deleteItemModel } from "./model";
+
 // All the elements selected from the DOM
  export const elements = {
     navElement: document.getElementById('nav-tab'),
@@ -6,7 +8,10 @@
     puddingContent: document.getElementById('pudding'),
     total: document.querySelector('.total'),
     items: document.querySelector('.item__cards'),
-    itemCards: document.querySelector('.item__cards')
+    itemCards: document.querySelector('.item__cards'),
+    cancelBtn: document.getElementById('cancel__payment'),
+    approveBtn: document.getElementById('approve__payment')
+    
 };
 
 
@@ -17,7 +22,7 @@ export const renderItems = (type, value, ingredient) => {
     `
     <div id="${ingredient}" class="${type}__item">
         <h4>${ingredient}</h4>
-        <p>${value}</p>
+        <p>£${parseFloat(Math.round(value * 100) / 100).toFixed(2)}</p>
     </div>
     `;
     //If the type is pizza insert item into the pizza tab pane
@@ -51,7 +56,7 @@ export const addItemUi = (type, value, ingredient, id) => {
         <div class="item__card" id="${id}">
             <h6>${type}</h6>
             <p>${ingredient}</p>
-            <p>£${value}</p>
+            <p>£${parseFloat(Math.round(value * 100) / 100).toFixed(2)}</p>
             <button id="delete__button">delete item</button>
         </div>
     <div>
@@ -64,6 +69,7 @@ export const addItemUi = (type, value, ingredient, id) => {
 
 
 // ========== DELETE ITEM VIEW =========
+//function to get the items id from the UI
 export const getId = (event) => {
 const cardId = event.target.parentNode.id;
 const ID = parseInt(cardId);
@@ -81,4 +87,16 @@ export const deleteItemView = (id) => {
     const delItem = document.getElementById(ID);
     // move up to the parent of that element and delete its child!
     delItem.parentNode.removeChild(delItem);
+}
+
+
+
+
+// ==============INIT FUNCTION ==============
+export const initView = (event) => {
+    const deleteItems = event.target.parentNode;
+    const itemContainers = document.querySelectorAll('#delete__item--container');
+    itemContainers.forEach(element => {
+        deleteItems.removeChild(element);
+    });
 }

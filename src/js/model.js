@@ -8,6 +8,7 @@ export default class Item {
     }
 }
 
+// NOTE: --------Insert a new item here... ---------
 // Object containing all of the Items
 export const items = {
     cheese: new Item('pizza', 6, 'cheese'),
@@ -15,12 +16,12 @@ export const items = {
     fanta: new Item('drinks', 1.50, 'fanta'),
     coke: new Item('drinks', 1.50, 'coke'),
     nutella: new Item('pudding', 4.55, 'nutella'),
-    applePie: new Item('pudding', 6, 'applePie')
+    applePie: new Item('pudding', 6, 'applePie'),
+    garlic: new Item('pizza', 8, 'garlic')
   }
 
 
   // =========== CALCULATING MODEL =======
-
 // cost array storing all the values from the items
 export let cost = [];
 // function to add the costs
@@ -40,7 +41,6 @@ export const calcTotal = () => {
 
 
 // ========== ADD ITEM MODEL =========
-
 // class to create a new added item
 class addedItem {
     constructor(type, value, ingredient, id){
@@ -87,7 +87,6 @@ export const addItemModel = (type, value, ingredient) => {
 
 
 // ========== DELETE ITEM MODEL =========
-
 export const deleteItemModel = (id) => {
     let ids, index;
 ids = addedItems.map(function(current){
@@ -102,6 +101,15 @@ if (index !== -1) {
 // update the cost array
 updateCost();
 }
+
+
+
+// ===========INIT FUNCTION ============
+export const initModel = () => {
+    addedItems = [];
+    cost = [];
+    updateCost();
+};
 
 
 
