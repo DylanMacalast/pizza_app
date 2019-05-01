@@ -11,13 +11,14 @@ export default class Item {
 // NOTE: --------Insert a new item here... ---------
 // Object containing all of the Items
 export const items = {
-    cheese: new Item('pizza', 6, 'cheese'),
-    chorizo: new Item('pizza', 7, 'chorizo'),
-    fanta: new Item('drinks', 1.50, 'fanta'),
-    coke: new Item('drinks', 1.50, 'coke'),
-    nutella: new Item('pudding', 4.55, 'nutella'),
-    applePie: new Item('pudding', 6, 'applePie'),
-    garlic: new Item('pizza', 8, 'garlic')
+    margherita: new Item('pizza', 7, 'margherita'),
+    chorizo: new Item('pizza', 8, 'chorizo'),
+    garlic: new Item('pizza', 6, 'garlic'),
+    garlicCheese: new Item('pizza', 7, 'garlicCheese'),
+    chocolate: new Item('pudding', 7, 'chocolate'),
+    banoffe: new Item('pudding', 9.50, 'banoffe'),
+    softDrink: new Item('drinks', 1.50, 'softDrink'),
+    beer: new Item('drinks', 2.50, 'beer')
   }
 
 

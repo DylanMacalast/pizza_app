@@ -1,9 +1,97 @@
+@import '../variables/color';
+
 footer{
-border: black 1px solid;
+    display: grid;
+    grid-template-columns: 40% 50%;
+    grid-template-rows: 50px;
+    border-bottom: 1px solid black;
+    padding-bottom: 15px;
+    grid-template-areas: 
+        "items  total"
+}
+
+.item__cards{
+    display: grid;
+    grid-template-columns: 100px 100px 100px 100px 100px ;
+    grid-template-rows: auto;
+    margin-left: 10px;
+    grid-column-gap: 5px;
+    grid-row-gap: 5px;
+    grid-template-areas: 
+        "button1 button2 button2 button2 button2"
+        "add add add add add"
+}
+
+
+.total__summary{
+    grid-area:  total;
+    justify-self: end;
+}
+
+a#cancel__payment{
+    grid-area: button1;
+    color: $primary2;
+    text-align: center;
+    padding-top: 5px;
+    padding: 15px; 
+    margin-bottom: 20px;
+    width: 100px;
+    text-decoration: none;
+    border: 1px solid $primary2;
+    &:hover{
+        background: $delete;
+        color: white;
+        border: none;
+    }
+
+}
+
+a#approve__payment{
+    grid-area: button2;
+    color: $primary2;
+    text-align: center;
+    padding: 15px;   
+    margin-bottom: 20px;
+    width: 100px;
+    text-decoration: none;
+    border: 1px solid $primary2;
+    &:hover{
+        background: $pay;
+        color: white;
+        border: none;
+    }
 }
 
 .item__card{
-    border: 1px solid blue;
     width: 100px;
-    margin: 10px;
+    text-align: center;
+    border-radius: 5%;
+    background: $background;
+    height: 80px;
 }
+
+.item__card--ingredient{
+    font-size: 14px;
+    text-transform: capitalize;
+
+}
+
+
+.delete__item--btn{
+    color: $delete;
+    border: 1px solid $delete;
+    padding-left: 5px;
+    padding-right: 5px;
+    padding-top: 1px;
+    padding-bottom: 1px;
+    border-radius: 100%;
+    font-size: 20px;
+    font-weight: 200;
+    &:hover{
+        background: $delete;
+        color: $white;
+        text-decoration: none;
+    }
+
+}
+

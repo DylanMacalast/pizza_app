@@ -20,9 +20,9 @@ import { deleteItemModel } from "./model";
 export const renderItems = (type, value, ingredient) => {
     const markup = 
     `
-    <div id="${ingredient}" class="${type}__item">
-        <h4>${ingredient}</h4>
-        <p>£${parseFloat(Math.round(value * 100) / 100).toFixed(2)}</p>
+    <div id="${ingredient}" class="${type}__item inventory__item">
+        <h4 class="inventory__h4">${ingredient}</h4>
+        <p class="inventory__price">£${parseFloat(Math.round(value * 100) / 100).toFixed(2)}</p>
     </div>
     `;
     //If the type is pizza insert item into the pizza tab pane
@@ -52,12 +52,10 @@ export const renderTotal = (total) =>{
 export const addItemUi = (type, value, ingredient, id) => {
     const markup = 
     `
-    <div id="delete__item--container">
+    <div id="delete__item--container" class="added__item--container">
         <div class="item__card" id="${id}">
-            <h6>${type}</h6>
-            <p>${ingredient}</p>
-            <p>£${parseFloat(Math.round(value * 100) / 100).toFixed(2)}</p>
-            <button id="delete__button">delete item</button>
+            <p class="item__card--ingredient">${ingredient}</p>
+            <a href="#" id="delete__button" class="delete__item--btn">X</a>
         </div>
     <div>
     `;

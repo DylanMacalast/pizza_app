@@ -105,12 +105,12 @@ elements.itemCards.addEventListener('click', function(e){
 
 
 // ADDING EVENT LISTENERS FOR THE ITMES
-// NOTE -> use event delegation to grab each inventory item
+//NOTE: Make it so that if the writing is selected it will still grab that div
+
 elements.pizzaContent.addEventListener('click', e =>{
     if(e.target.parentNode.id === 'pizza'){
         addItem();
     }
-    
 });
 elements.drinksContent.addEventListener('click', e=>{
     if(e.target.parentNode.id === 'drinks'){
