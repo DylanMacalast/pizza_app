@@ -1,4 +1,6 @@
-@import "~bootstrap/scss/bootstrap";
 @import './partials/nav';
 @import "./partials/inventory";
 @import "./partials/footer";
+body {
+    font-family: 'Roboto', sans-serif;
+}

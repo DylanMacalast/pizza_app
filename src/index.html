@@ -3,69 +3,44 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Wood Fired Kitched</title>
+    <title>Pizza App</title>
     <!-- Open Graph data -->
     <meta property="og:title" content="Wood Fired Kitchen" />
     <meta property="og:type" content="article" />
     <meta property="og:url" content="https://github.com/DylanMacalast/pizza_app" />
     <meta property="og:description" content="inventory calculating application" />
-    <!-- Mobile header color for iOS Safari (supports black, black-translucent or default) -->
     <meta name="apple-mobile-web-app-status-bar-style" content="default">
     <link href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700" rel="stylesheet">
 </head>
 <body>
     <section>
         <div class="inventory__container">
-            <!-- Inventory Tabs -->
             <ul id="nav-tab" class="inventory__nav">
-                <li class="inventory__li active"><a class="inventory__a" href="#pizza">Pizza</a></li>
-                <li class="inventory__li"><a class="inventory__a" href="#drinks">Drinks</a></li>
-                <li class="inventory__li"><a class="inventory__a" href="#pudding">Pudding</a></li>
+                <li class="inventory__li active"><a id="pizzas" class="inventory__a" href="#pizza">Pizza</a></li>
+                <li class="inventory__li"><a id="drinks" class="inventory__a" href="#drink">Drinks</a></li>
+                <li class="inventory__li"><a id="puddings" class="inventory__a" href="#pudding">Pudding</a></li>
             </ul>
-
-                <!-- inventory Tab panes -->
             <div class="inventory__tabs container">
-                <!-- Pizza -->
                 <div class="inventory__tab active" id="pizza">
-                <!-- <div id="cheese" class="pizza__item">
-                        <h4>cheese</h4>
-                        <p>£8.00</p>
-                    </div> -->
                 </div>
-                <!-- Drinks -->
-                <div class="inventory__tab" id="drinks">
-                    <!-- <div id="fanta" class="drinks__item">
-                        <h4>fanta</h4>
-                        <p>£4.00</p>
-                    </div> -->
+                <div class="inventory__tab" id="drink">
                 </div>
-                <!-- Pudding -->
                 <div class="inventory__tab" id="pudding">
-                    <!-- <div id="nutella" class="pudding__item">
-                        <h4>nutella</h4>
-                        <p>£4.00</p>
-                    </div> -->
                 </div>
             </div>
         </div>
     </section>
-
-
-    <footer class="footer">
-            <div class="item__cards">
-             <!-- <div id="delete__item--container">
-                    <div class="item__card" id="${id}">
-                        <h6>drinks</h6>
-                        <p>coke</p>
-                        <p>£1.50</p>
-                        <button id="delete__button">delete item</button>
-                    </div>
-                <div> -->
-                <a href="#" id="cancel__payment" class="">Cancel</a>
-                <a href="#" id="approve__payment" class="">Pay</a>
-            </div>
+    <section class="controls">
+        <div class="buttons">
+            <a href="#" id="cancel__payment">Cancel</a>
+            <a href="#" id="approve__payment">Pay</a>
+        </div>
         <div class="total__summary">
-            <p class="total__p">total: <span class="total">£0.00</span></p>
+            <p class="total__p">total: £<span id="total">0.00</span></p>
+        </div>
+    </section>
+    <footer class="footer">
+        <div class="item__cards">
         </div>
     </footer>
 </body>

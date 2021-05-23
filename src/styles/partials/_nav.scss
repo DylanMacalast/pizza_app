@@ -1,7 +1,6 @@
 @import './../variables/color';
 // NAVBAR
 .inventory__nav{
-    text-decoration: none;
     padding: 0;
     margin-top: 0;
     text-align: center;
@@ -33,7 +32,9 @@
     
 .inventory__a{
       color: $blue;
-      font-weight: 400;
+      font-weight: 600;
+      font-size: large;
+      text-decoration: none;
       text-transform: uppercase;
       cursor: pointer;
       letter-spacing: 1.5px;
